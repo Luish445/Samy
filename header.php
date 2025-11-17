@@ -23,7 +23,7 @@
     <!-- Logo -->
     <div class="logo">
       <a href="<?php echo esc_url(home_url('/')); ?>">
-        <img src="https://simysneakers.site/wp-content/uploads/2025/10/Recurso-2.svg" alt="SamySneakers">
+        <img src="https://samisneakers.com/wp-content/uploads/2025/11/logo234.svg" alt="SamiSneakers">
       </a>
     </div>
 
