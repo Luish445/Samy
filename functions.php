@@ -30,19 +30,27 @@ document.addEventListener('DOMContentLoaded', function() {
   const toggle = document.querySelector('.menu-toggle');
   const nav = document.querySelector('.main-nav');
 
+  if (!toggle || !nav) {
+    return;
+  }
+
   toggle.addEventListener('click', () => {
     const icon = toggle.querySelector('i');
-    nav.classList.toggle('active');
-    toggle.classList.toggle('active');
-    document.body.classList.toggle('menu-open');
+    const isOpen = nav.classList.toggle('active');
+
+    toggle.classList.toggle('active', isOpen);
+    document.body.classList.toggle('menu-open', isOpen);
+    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
 
     // Cambiar ícono dinámicamente
-    if (nav.classList.contains('active')) {
-      icon.classList.remove('fa-bars');
-      icon.classList.add('fa-times');
-    } else {
-      icon.classList.remove('fa-times');
-      icon.classList.add('fa-bars');
+    if (icon) {
+      if (isOpen) {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
+      } else {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+      }
     }
   });
 });

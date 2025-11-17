@@ -27,12 +27,10 @@
       </a>
     </div>
 
-    <!-- Botón hamburguesa (solo se muestra en móvil) -->
-<?php if ( wp_is_mobile() ) : ?>
-  <button class="menu-toggle" aria-label="Abrir menú">
-    <i class="fas fa-bars"></i>
-  </button>
-<?php endif; ?>
+    <!-- Botón hamburguesa (se oculta en escritorio mediante CSS) -->
+    <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
+      <i class="fas fa-bars"></i>
+    </button>
 
 
     <!-- Menú principal -->
@@ -61,10 +59,3 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 </header>
-
-<?php
-// ⚙️ WordPress necesita wp_footer() antes del cierre del body
-wp_footer();
-?>
-</body>
-</html>
