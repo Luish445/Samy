@@ -9,7 +9,6 @@
         <div class="footer-column">
             <h3>Enlaces útiles</h3>
             <ul>
-                <li><a href="<?php echo home_url('/tienda'); ?>">Catálogo</a></li>
                 <li><a href="<?php echo home_url('/categoria/sneakers'); ?>">Sneakers</a></li>
                 <li><a href="<?php echo home_url('/categoria/playeras'); ?>">Playeras</a></li>
                 <li><a href="<?php echo home_url('/categoria/gorras'); ?>">Gorras</a></li>
@@ -19,9 +18,9 @@
         <div class="footer-column">
             <h3>Contacto</h3>
             <ul>
-                <li><a href="mailto:contacto@simysneakers.site"> contacto@simysneakers.site</a></li>
+                <li><a href="mailto:contacto@samisneakers.com"> contacto@samisneakers.com</a></li>
                 <li>Leon Gto. Mexico</li>
-                <li><a href="https://wa.me/523328668222" target="_blank">WhatsApp directo</a></li>
+                <li><a href="https://wa.me/524779208851" target="_blank">WhatsApp directo</a></li>
             </ul>
         </div>
 
@@ -36,6 +35,7 @@
     </div>
     <div class="footer-bottom">
         <p>© <?phpecho date('Y'); ?> SamySneakers - Todos los derechos reservados.</p>
+        <p>© <?php echo date('Y'); ?> SamySneakers - Todos los derechos reservados.</p>
     </div>
 </footer>
 <?php wp_footer(); ?>
@@ -61,6 +61,10 @@ document.addEventListener("DOMContentLoaded", function () {
   const slides = document.querySelectorAll(".hero-slider .slide");
   let current = 0;
 
+  if (slides.length <= 1) {
+    return;
+  }
+
   function changeSlide() {
     slides[current].classList.remove("active");
     current = (current + 1) % slides.length;
@@ -71,6 +75,59 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const viewport = document.querySelector(".brand-viewport");
+  const track = document.querySelector(".brand-track");
+
+  if (!viewport || !track) {
+    return;
+  }
+
+  const baseHTML = track.innerHTML;
+
+  function fillTrack() {
+    track.innerHTML = baseHTML;
+
+    const baseItems = Array.from(track.children);
+
+    if (baseItems.length === 0) {
+      return;
+    }
+
+    const viewportWidth = viewport.offsetWidth;
+
+    if (viewportWidth === 0) {
+      return;
+    }
+
+    let totalWidth = track.scrollWidth;
+
+    if (totalWidth === 0) {
+      return;
+    }
+
+    let iterations = 0;
+
+    while (totalWidth < viewportWidth * 2 && iterations < 10) {
+      baseItems.forEach((item) => {
+        const clone = item.cloneNode(true);
+        clone.setAttribute("aria-hidden", "true");
+        track.appendChild(clone);
+      });
+
+      totalWidth = track.scrollWidth;
+      iterations += 1;
+    }
+  }
+
+  fillTrack();
+  window.addEventListener("load", fillTrack);
+  window.addEventListener("resize", fillTrack);
+});
+</script>
+
 
 </body>
+</html>
 </html>
