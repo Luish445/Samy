@@ -1,10 +1,18 @@
 /*
 Theme Name: simisneakers
-Theme URI: https://simysneakers.site
+Theme URI: https://samisneakers.com
 Description: Tema personalizado creado desde cero
 Author: Luis Angel Soriano
 Version: 1.0
 */
+
+@font-face {
+    font-family: 'BebasNeueBold';
+    src: url('/wp-content/themes/simisneakers-child/fonts/BebasNeue.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
 
 body {
     margin: 0;
@@ -15,9 +23,9 @@ body {
 
 /* == Barra de anuncio == */
 .announcement-bar {
-    background: #2746df;
+    background: #e1ff00;
     /* azul */
-    color: #fff;
+    color: #000000;
     overflow: hidden;
     white-space: nowrap;
     padding: 8px 0;
@@ -378,10 +386,14 @@ Para este ejemplo, asumimos que los párrafos deben tener una separación intern
     text-decoration: none;
     font-weight: bold;
     transition : color 0.3s;
+     font-family: 'BebasNeue', sans-serif !important;
+    font-weight: bold !important;
+    letter-spacing: 1px;
+    text-transform: uppercase !important;
 }
 
 .main-nav .menu li a:hover {
-    color: #2746df;
+    color: #ffff00;
 }
 
 /* Responsivo */
@@ -512,7 +524,7 @@ header .main-nav .menu {
   flex-wrap: wrap;
   justify-content: center;
   list-style: none;
-  margin: 15px 0;
+  margin: 10  px 0;
   padding: 0;
   gap: 20px;
 }
@@ -622,10 +634,10 @@ header .main-nav .menu a:hover {
   }
 }
 
-/* === HEADER MODERNO === */
+/* === HEADER MODERNO (centrado vertical) === */
 .main-header {
   background: #fff;
-  border-bottom: 2px solid #ffffff; /* línea azul superior */
+  border-bottom: 2px solid #ffffff; /* si quieres azul, cámbialo */
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -633,12 +645,23 @@ header .main-nav .menu a:hover {
 
 .container-header {
   display: flex;
-  align-items: center;
+  align-items: center;          /* CENTRA verticalmente logo + menú + iconos */
   justify-content: space-between;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 5px 20px;
+  padding: 14px 32px;           /* MISMO espacio arriba y abajo */
+  box-sizing: border-box;
 }
+
+.main-nav .menu {
+  display: flex;
+  align-items: center;      /* centra los textos dentro del header */
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
 
 .logo img {
   height: 45px;
@@ -775,7 +798,7 @@ header .main-nav .menu a:hover {
 
 
 .hero {
-  margin-top: -40px; /* 🔹 Sube el hero 40 píxeles */
+  margin-top: 0px; /* 🔹 Sube el hero 40 píxeles */
   z-index: 1; /* 🔹 asegura que quede debajo del menú */
 }
 
@@ -1091,68 +1114,78 @@ body.page-id-1242 footer {
 @media (max-width: 768px) {
   .carousel-btn {
     display: none;
-  }
+  diff --git a/style.css b/style.css
+index b74d2f01691d7752abed9e8157363037311c79e0..452be7d6dd71a8452c2a4c7c9f98287c9bfe2791 100644
+--- a/style.css
++++ b/style.css
+@@ -1094,65 +1094,67 @@ body.page-id-1242 footer {
+   }
+ 
+   .carousel-item {
+     flex: 0 0 80%;
+   }
+ }
+ 
+ /* === Ticker continuo de marcas (tipo barra de anuncio) === */
+ .brand-ticker {
+   padding: 28px 0;
+   background: #f8f8f8;
+   border-top: 1px solid #eee;
+   border-bottom: 1px solid #eee;
+ }
+ 
+ .brand-viewport {
+   overflow: hidden;
+   width: 100%;
+ }
+ 
+ .brand-track {
+   display: inline-flex;              /* una sola fila */
+   align-items: center;
+   gap: 32px;                         /* espacio entre logos */
+   white-space: nowrap;
++  flex-wrap: nowrap;
+   animation: brand-scroll 28s linear infinite;
+   will-change: transform;
+ }
+ 
+ /* Marco fijo del logo: controla el tamaño REAL */
+ .brand {
+   flex: 0 0 auto;
+   height: 48px !important;           /* ← altura fija (ajusta a gusto) */
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   padding: 0 8px;
+ }
+ 
+ .brand img {
+   display: block;
+   height: 100% !important;           /* ← la imagen nunca supera el marco */
+   width: auto !important;            /* mantiene proporción */
+   max-width: none !important;        /* evita límites raros del tema */
+   object-fit: contain;
+   opacity: 0.7;
+   transition: opacity .2s ease;
+ }
+ 
+ .brand img:hover { opacity: 1; }
+ 
+ /* Pausa al pasar el mouse (opcional) */
+ .brand-viewport:hover .brand-track { animation-play-state: paused; }
+ 
+-/* Animación continua: como la barra de anuncio */
++/* Animación continua: como la barra de anuncio.
++   Los elementos se duplican dinámicamente con JS para que siempre exista contenido suficiente. */
+ @keyframes brand-scroll {
+   from { transform: translateX(0); }
+   to   { transform: translateX(-50%); } /* -50% porque duplicamos el contenido */
+ }
+ 
+ /* Móvil: logos un poco más chicos y menos gap */
+ @media (max-width: 768px) {
+   .brand { height: 36px !important; }
+   .brand-track { gap: 20px; animation-duration: 36s; }
+ }
 
-  .carousel-item {
-    flex: 0 0 80%;
-  }
-}
 
-/* === Ticker continuo de marcas (tipo barra de anuncio) === */
-.brand-ticker {
-  padding: 28px 0;
-  background: #f8f8f8;
-  border-top: 1px solid #eee;
-  border-bottom: 1px solid #eee;
-}
-
-.brand-viewport {
-  overflow: hidden;
-  width: 100%;
-}
-
-.brand-track {
-  display: inline-flex;              /* una sola fila */
-  align-items: center;
-  gap: 32px;                         /* espacio entre logos */
-  white-space: nowrap;
-  animation: brand-scroll 28s linear infinite;
-  will-change: transform;
-}
-
-/* Marco fijo del logo: controla el tamaño REAL */
-.brand {
-  flex: 0 0 auto;
-  height: 48px !important;           /* ← altura fija (ajusta a gusto) */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 8px;
-}
-
-.brand img {
-  display: block;
-  height: 100% !important;           /* ← la imagen nunca supera el marco */
-  width: auto !important;            /* mantiene proporción */
-  max-width: none !important;        /* evita límites raros del tema */
-  object-fit: contain;
-  opacity: 0.7;
-  transition: opacity .2s ease;
-}
-
-.brand img:hover { opacity: 1; }
-
-/* Pausa al pasar el mouse (opcional) */
-.brand-viewport:hover .brand-track { animation-play-state: paused; }
-
-/* Animación continua: como la barra de anuncio */
-@keyframes brand-scroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); } /* -50% porque duplicamos el contenido */
-}
-
-/* Móvil: logos un poco más chicos y menos gap */
-@media (max-width: 768px) {
-  .brand { height: 36px !important; }
-  .brand-track { gap: 20px; animation-duration: 36s; }
-}
