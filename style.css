@@ -7,8 +7,8 @@ Version: 1.0
 */
 
 @font-face {
-    font-family: 'BebasNeueBold';
-    src: url('/wp-content/themes/simisneakers-child/fonts/BebasNeue.ttf') format('truetype');
+    font-family: 'BebasNeue';
+    src: url('/wp-content/themes/tema-simi/fonts/BebasNeue.ttf') format('truetype');
     font-weight: bold;
     font-style: normal;
 }
@@ -16,14 +16,14 @@ Version: 1.0
 
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'BebasNeue', sans-serif;
     background: #ffffff;
     color: #000000;
 }
 
 /* == Barra de anuncio == */
 .announcement-bar {
-    background: #e1ff00;
+    background: #FFFF00;
     /* azul */
     color: #000000;
     overflow: hidden;
@@ -31,7 +31,7 @@ body {
     padding: 8px 0;
     font-weight: bold;
     position: relative;
-    z-index: 1000;
+    z-index: 990;
 }
 
 .announcement-bar-inner {
@@ -42,7 +42,7 @@ body {
 
 .announcement-item {
     display: inline-block;
-    margin: 0 50px;
+    margin: 0px;
 }
 
 /* Animacion de texto continuo */
@@ -111,8 +111,8 @@ body {
 }
 
 .btn-hero {
-  background: #2746df;
-  color: #fff;
+  background: #FFFF00;
+  color: #000000;
   padding: 14px 28px;
   border-radius: 50px;
   text-decoration: none;
@@ -121,7 +121,7 @@ body {
 }
 
 .btn-hero:hover {
-  background: #1d34a3;
+  background: #ffffff;
 }
 
 /* === RESPONSIVO === */
@@ -228,8 +228,8 @@ Para este ejemplo, asumimos que los párrafos deben tener una separación intern
 */
 
 .btn-about {
-    background: #2746df;
-    color: #fff;
+    background: #FFFF00;
+    color: #000000;
     padding: 12px 24px;
     border-radius: 8px;
     text-decoration: none;
@@ -238,7 +238,7 @@ Para este ejemplo, asumimos que los párrafos deben tener una separación intern
 }
 
 .btn-about:hover {
-    background: #1d34a3;
+    background: #ffffff;
 }
 
 .about-image {
@@ -368,7 +368,7 @@ Para este ejemplo, asumimos que los párrafos deben tener una separación intern
 /* === Menú principal === */
 .main-nav {
     background:#ffffff;
-    padding: 15px 0;
+    padding:0;
     text-align: center;
 }
 
@@ -386,10 +386,11 @@ Para este ejemplo, asumimos que los párrafos deben tener una separación intern
     text-decoration: none;
     font-weight: bold;
     transition : color 0.3s;
-     font-family: 'BebasNeue', sans-serif !important;
+    font-family: 'BebasNeue', sans-serif !important;
     font-weight: bold !important;
     letter-spacing: 1px;
     text-transform: uppercase !important;
+    font-size: 1.2rem !important;  /* Ajusta aquí el tamaño */
 }
 
 .main-nav .menu li a:hover {
@@ -524,7 +525,7 @@ header .main-nav .menu {
   flex-wrap: wrap;
   justify-content: center;
   list-style: none;
-  margin: 10  px 0;
+  margin: 0;
   padding: 0;
   gap: 20px;
 }
@@ -615,12 +616,12 @@ header .main-nav .menu a:hover {
 
 .producto-item h3 {
   font-size: 1rem;
-  color: #222;
+  color: #000000;
   margin: 12px 0 5px;
 }
 
 .producto-item .precio {
-  color: #2746df;
+  color: #00000000;
   font-weight: bold;
 }
 
@@ -638,9 +639,9 @@ header .main-nav .menu a:hover {
 .main-header {
   background: #fff;
   border-bottom: 2px solid #ffffff; /* si quieres azul, cámbialo */
-  position: sticky;
+  /*position: sticky;*/
   top: 0;
-  z-index: 1000;
+  z-index: 9999;
 }
 
 .container-header {
@@ -798,7 +799,7 @@ header .main-nav .menu a:hover {
 
 
 .hero {
-  margin-top: 0px; /* 🔹 Sube el hero 40 píxeles */
+  margin-top: 40px; /* 🔹 Sube el hero 40 píxeles */
   z-index: 1; /* 🔹 asegura que quede debajo del menú */
 }
 
@@ -860,7 +861,7 @@ header .main-nav .menu a:hover {
     position: absolute;
     top: -6px;
     right: -10px;
-    background: #2746df;
+    background: #ccff00;
     color: #fff;
     font-size: 0.7rem;
     border-radius: 50%;
@@ -879,7 +880,7 @@ header .main-nav .menu a:hover {
   /* Fondo blanco y línea azul superior */
   .main-header {
     background: #ffffff;
-    border-bottom: 2px solid #2746df;
+    border-bottom: 2px solid #000000;
     padding: 5px 0;
   }
 }
@@ -909,7 +910,7 @@ header .main-nav .menu a:hover {
     padding-top: 40px;
     transition: bottom 0.4s ease-in-out;
     z-index: 999; /* 🔹 debajo del header */
-    border-top: 2px solid #2746df;
+    border-top: 2px solid #000000;
     border-radius: 20px 20px 0 0;
   }
 
@@ -944,7 +945,7 @@ header .main-nav .menu a:hover {
   /* 🔹 El botón hamburguesa / X siempre visible */
   .menu-toggle {
     position: relative;
-    z-index: 1000; /* 🔹 por encima del menú */
+    z-index: 1001; /* 🔹 por encima del menú */
   }
 
   .menu-toggle.active {
@@ -1040,6 +1041,7 @@ body.page-id-1242 footer {
   text-align: center;
   background: #fff;
   padding: 60px 0;
+  font-family: 'BebasNeue', sans-serif !important;
 }
 
 .featured-products h2 {
@@ -1075,6 +1077,17 @@ body.page-id-1242 footer {
   padding: 15px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.08);
   transition: transform 0.3s ease;
+  /* === Estilo del texto dentro del carrusel === */
+ .carousel-item h2,
+ .carousel-item .product-title {
+   color: #000000; /* Cambia por el color que quieras */
+ }
+
+.carousel-item p,
+.carousel-item .price {
+  color: #00000000; /* Precio */
+}
+
 }
 
 .carousel-item:hover {
@@ -1099,7 +1112,7 @@ body.page-id-1242 footer {
 }
 
 .carousel-btn:hover {
-  background: #1d34a3;
+  background: #000000;
 }
 
 .carousel-btn.prev {
@@ -1187,5 +1200,35 @@ index b74d2f01691d7752abed9e8157363037311c79e0..452be7d6dd71a8452c2a4c7c9f98287c
    .brand { height: 36px !important; }
    .brand-track { gap: 20px; animation-duration: 36s; }
  }
+
+/* === TIPOGRAFÍA BEBAS NEUE PARA TODO WOOCOMMERCE === */
+
+/* Texto general de WooCommerce: listados, producto, carrito, checkout */
+.woocommerce,
+.woocommerce * {
+    font-family: 'BebasNeue', sans-serif !important;
+}
+
+/* Títulos de producto en el catálogo */
+.woocommerce ul.products li.product .woocommerce-loop-product__title {
+    font-family: 'BebasNeue', sans-serif !important;
+}
+
+/* Precio en catálogo y en página de producto */
+.woocommerce ul.products li.product .price,
+.woocommerce div.product p.price,
+.woocommerce div.product span.price {
+    font-family: 'BebasNeue', sans-serif !important;
+}
+
+/* Botones (añadir al carrito, finalizar compra, etc.) */
+.woocommerce a.button,
+.woocommerce button.button,
+.woocommerce input.button,
+.woocommerce #respond input#submit {
+    font-family: 'BebasNeue', sans-serif !important;
+}
+
+
 
 
