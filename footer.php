@@ -34,27 +34,10 @@
         </div>
     </div>
     <div class="footer-bottom">
-        <p>© <?phpecho date('Y'); ?> SamySneakers - Todos los derechos reservados.</p>
         <p>© <?php echo date('Y'); ?> SamySneakers - Todos los derechos reservados.</p>
     </div>
 </footer>
 <?php wp_footer(); ?>
-
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  const menuToggle = document.querySelector(".menu-toggle");
-  const mainNav = document.querySelector(".main-nav");
-  const body = document.body;
-
-  if (menuToggle && mainNav) {
-    menuToggle.addEventListener("click", function() {
-      mainNav.classList.toggle("active");
-      menuToggle.classList.toggle("active");
-      body.classList.toggle("menu-open");
-    });
-  }
-});
-</script>
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
@@ -127,7 +110,5 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 
-
 </body>
-</html>
 </html>
