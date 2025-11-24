@@ -48,3 +48,39 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 <?php });
+
+// Shortcode [products_no_cart]: muestra productos SIN botón de "Añadir al carrito"
+function simi_products_no_cart_shortcode( $atts ) {
+
+    if ( ! class_exists( 'WC_Shortcodes' ) ) {
+        return ''; // WooCommerce no está activo
+    }
+
+    // Quita temporalmente el botón de añadir al carrito
+    remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10 );
+
+    // Genera el HTML normal del shortcode [products]
+    $content = WC_Shortcodes::products( $atts );
+
+    // Vuelve a activar el botón para el resto de la tienda
+    add_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10 );
+
+    return $content;
+}
+add_shortcode( 'products_no_cart', 'simi_products_no_cart_shortcode' );
+
+// functions.php
+function mi_ticker_scripts() {
+    // Encola el script solo si estamos en la página de inicio
+    if ( is_front_page() ) {
+        wp_enqueue_script( 
+            'brand-ticker-script', // Handle (Nombre del script)
+            get_template_directory_uri() . '/ticker.js', // Ruta al archivo
+            array(), // Dependencias (otros scripts que debe cargar antes)
+            '1.0', // Versión
+            true // Cargar en el footer (antes de </body>)
+        );
+    }
+}
+add_action( 'wp_enqueue_scripts', 'mi_ticker_scripts' );
+
