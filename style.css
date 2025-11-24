@@ -9,7 +9,7 @@ Version: 1.0
 @font-face {
     font-family: 'BebasNeue';
     src: url('/wp-content/themes/tema-simi/fonts/BebasNeue.ttf') format('truetype');
-    font-weight: bold;
+    font-weight: 400;
     font-style: normal;
 }
 
@@ -29,7 +29,7 @@ body {
     overflow: hidden;
     white-space: nowrap;
     padding: 8px 0;
-    font-weight: bold;
+    font-weight: 500;
     position: relative;
     z-index: 990;
 }
@@ -116,8 +116,9 @@ body {
   padding: 14px 28px;
   border-radius: 50px;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 500;
   transition: background 0.3s;
+  font-size: 1.5rem;
 }
 
 .btn-hero:hover {
@@ -140,7 +141,7 @@ body {
 
   .btn-hero {
     padding: 10px 20px;
-    font-size: 0.9rem;
+    font-size: 1.5rem;
   }
 }
 
@@ -176,7 +177,7 @@ body {
 
   .btn-hero {
     padding: 10px 20px;
-    font-size: 0.9rem;
+    font-size: 1.5rem;
   }
 }
 
@@ -233,7 +234,7 @@ Para este ejemplo, asumimos que los párrafos deben tener una separación intern
     padding: 12px 24px;
     border-radius: 8px;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 500;
     transition: background 0.3s;
 }
 
@@ -384,10 +385,10 @@ Para este ejemplo, asumimos que los párrafos deben tener una separación intern
 .main-nav .menu li a {
     color: #000000;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 500;
     transition : color 0.3s;
     font-family: 'BebasNeue', sans-serif !important;
-    font-weight: bold !important;
+    font-weight: 500 !important;
     letter-spacing: 1px;
     text-transform: uppercase !important;
     font-size: 1.2rem !important;  /* Ajusta aquí el tamaño */
@@ -622,7 +623,7 @@ header .main-nav .menu a:hover {
 
 .producto-item .precio {
   color: #00000000;
-  font-weight: bold;
+  font-weight: 400;
 }
 
 /* Versión móvil */
@@ -641,7 +642,7 @@ header .main-nav .menu a:hover {
   border-bottom: 2px solid #ffffff; /* si quieres azul, cámbialo */
   /*position: sticky;*/
   top: 0;
-  z-index: 9999;
+  z-index: 1000;
 }
 
 .container-header {
@@ -761,7 +762,7 @@ header .main-nav .menu a:hover {
     text-align: center;
     padding-top: 120px;
     transition: top 0.4s ease-in-out;
-    z-index: 9999; /* 🔹 Asegura que quede encima de todo */
+    z-index: 1000; /* 🔹 Asegura que quede encima de todo */
   }
 
   /* Cuando se activa (por JavaScript) */
@@ -827,15 +828,31 @@ header .main-nav .menu a:hover {
   }
 
   /* Botón hamburguesa a la izquierda */
-  .menu-toggle {
-    display: block;
-    order: 1;
-    background: none;
-    border: none;
-    font-size: 1.6rem;
-    color: #000;
-  }
+  /* === MENÚ MÓVIL: ASEGURAR BOTÓN DE CIERRE POR ENCIMA === */
+  @media (max-width: 768px) {
 
+    /* Botón hamburguesa/X: Posicionamiento global para evitar conflictos */
+    .menu-toggle {
+      display: block !important;
+      background: none;
+      border: none;
+      font-size: 1.6rem;
+      color: #000;
+
+      /* ❗ CAMBIO CRÍTICO: FIXED POSITION y Z-INDEX SÚPER ALTO ❗ */
+      position: fixed !important; /* Sacamos el botón del flujo del header */
+      top: 50px; /* Ajusta para que quede centrado con la barra superior del header */
+      left: 16px; /* Posición izquierda, alineado al inicio */
+      z-index: 100000 !important; /* Valor máximo para estar encima de todo */
+    }
+
+    /* ❗ REVERTIMOS EL ORDEN DEL BOTÓN DENTRO DEL HEADER ❗ */
+    /* Debemos quitar las propiedades de 'flex' que lo ubicaban antes */
+    .container-header .menu-toggle {
+      order: unset; /* Ignoramos el orden 1 de flexbox */
+      margin: 0;
+    }
+  }
   /* Íconos alineados a la derecha */
   .header-icons {
     display: flex;
@@ -893,6 +910,7 @@ header .main-nav .menu a:hover {
     justify-content: space-between;
     flex-direction: row;
   }
+}
 
 /* === MENÚ MÓVIL DESLIZABLE DESDE ABAJO === */
 @media (max-width: 768px) {
@@ -909,7 +927,7 @@ header .main-nav .menu a:hover {
     text-align: center;
     padding-top: 40px;
     transition: bottom 0.4s ease-in-out;
-    z-index: 999; /* 🔹 debajo del header */
+    z-index: 9990 !important; /* 🔹 debajo del header */
     border-top: 2px solid #000000;
     border-radius: 20px 20px 0 0;
   }
@@ -1017,7 +1035,7 @@ header .main-nav .menu a:hover {
   header .menu-toggle,
   .main-header .menu-toggle,
   .container-header .menu-toggle {
-    display: none !important;
+   /* display: none !important;*/
     visibility: hidden !important;
     opacity: 0 !important;
     width: 0 !important;
@@ -1046,7 +1064,7 @@ body.page-id-1242 footer {
 
 .featured-products h2 {
   font-size: 2rem;
-  margin-bottom: 30px;
+  margin-bottom: 30px; 
 }
 
 .carousel-container {
@@ -1080,12 +1098,12 @@ body.page-id-1242 footer {
   /* === Estilo del texto dentro del carrusel === */
  .carousel-item h2,
  .carousel-item .product-title {
-   color: #000000; /* Cambia por el color que quieras */
+   color: #000; /* Cambia por el color que quieras */
  }
 
 .carousel-item p,
 .carousel-item .price {
-  color: #00000000; /* Precio */
+  color: #000000; /* Precio */
 }
 
 }
@@ -1124,82 +1142,105 @@ body.page-id-1242 footer {
 }
 
 /* En móvil, oculta las flechas */
+/* En móvil, ajustamos el ancho del carrusel para deslizar 1x1 */
 @media (max-width: 768px) {
-  .carousel-btn {
-    display: none;
-  diff --git a/style.css b/style.css
-index b74d2f01691d7752abed9e8157363037311c79e0..452be7d6dd71a8452c2a4c7c9f98287c9bfe2791 100644
---- a/style.css
-+++ b/style.css
-@@ -1094,65 +1094,67 @@ body.page-id-1242 footer {
-   }
+    
+    .carousel-btn {
+        display: none; /* Oculta las flechas */
+    }
+
+    .carousel-container {
+        padding: 0 10px; /* Nuevo padding reducido */
+    }
+
+    .carousel-item {
+        flex: 0 0 95%; /* Muestra solo un ítem a la vez (95% del ancho) */
+        scroll-snap-align: center;
+    }
+}
+/* === Ticker continuo de marcas (tipo barra de anuncio) === */
+.brand-ticker {
+  padding: 28px 0;
+  background: #f8f8f8;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
  
-   .carousel-item {
-     flex: 0 0 80%;
-   }
- }
+.brand-viewport {
+  overflow: hidden;
+  width: 100%;
+}
  
- /* === Ticker continuo de marcas (tipo barra de anuncio) === */
- .brand-ticker {
-   padding: 28px 0;
-   background: #f8f8f8;
-   border-top: 1px solid #eee;
-   border-bottom: 1px solid #eee;
- }
+.brand-track {
+  display: inline-flex;              /* una sola fila */
+  align-items: center;
+  gap: 32px;                         /* espacio entre logos */
+  white-space: nowrap;
+  flex-wrap: nowrap;
+  
+  /* 💡 CORRECCIÓN: width: max-content va aquí, no hay duplicación */
+  width: max-content;
+  
+  /* Animación con prefijo para máxima compatibilidad */
+  -webkit-animation: brand-scroll 28s linear infinite; 
+  animation: brand-scroll 28s linear infinite;
+  
+  /* Optimización con prefijo */
+  -webkit-will-change: transform;
+  will-change: transform;
+}
  
- .brand-viewport {
-   overflow: hidden;
-   width: 100%;
- }
+/* Marco fijo del logo: controla el tamaño REAL */
+.brand {
+  flex: 0 0 auto;
+  height: 48px !important;           /* ← altura fija (ajusta a gusto) */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8px;
+}
  
- .brand-track {
-   display: inline-flex;              /* una sola fila */
-   align-items: center;
-   gap: 32px;                         /* espacio entre logos */
-   white-space: nowrap;
-+  flex-wrap: nowrap;
-   animation: brand-scroll 28s linear infinite;
-   will-change: transform;
- }
+.brand img {
+  display: block;
+  height: 100% !important;           /* ← la imagen nunca supera el marco */
+  width: auto !important;            /* mantiene proporción */
+  max-width: none !important;        /* evita límites raros del tema */
+  object-fit: contain;
+  opacity: 0.7;
+  transition: opacity .2s ease;
+}
  
- /* Marco fijo del logo: controla el tamaño REAL */
- .brand {
-   flex: 0 0 auto;
-   height: 48px !important;           /* ← altura fija (ajusta a gusto) */
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   padding: 0 8px;
- }
+.brand img:hover { opacity: 1; }
  
- .brand img {
-   display: block;
-   height: 100% !important;           /* ← la imagen nunca supera el marco */
-   width: auto !important;            /* mantiene proporción */
-   max-width: none !important;        /* evita límites raros del tema */
-   object-fit: contain;
-   opacity: 0.7;
-   transition: opacity .2s ease;
- }
+/* Pausa al pasar el mouse (opcional) */
+.brand-viewport:hover .brand-track { 
+  -webkit-animation-play-state: paused;
+  animation-play-state: paused; 
+}
  
- .brand img:hover { opacity: 1; }
+/* Animación continua: como la barra de anuncio. */
+@keyframes brand-scroll {
+  from { 
+    -webkit-transform: translateX(0);
+    transform: translateX(0); 
+  }
+  to   { 
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%); /* -50% porque duplicamos el contenido */
+  }
+}
+
+/* Prefijo para Webkit */
+@-webkit-keyframes brand-scroll {
+  from { -webkit-transform: translateX(0); }
+  to   { -webkit-transform: translateX(-50%); }
+}
  
- /* Pausa al pasar el mouse (opcional) */
- .brand-viewport:hover .brand-track { animation-play-state: paused; }
- 
--/* Animación continua: como la barra de anuncio */
-+/* Animación continua: como la barra de anuncio.
-+   Los elementos se duplican dinámicamente con JS para que siempre exista contenido suficiente. */
- @keyframes brand-scroll {
-   from { transform: translateX(0); }
-   to   { transform: translateX(-50%); } /* -50% porque duplicamos el contenido */
- }
- 
- /* Móvil: logos un poco más chicos y menos gap */
- @media (max-width: 768px) {
-   .brand { height: 36px !important; }
-   .brand-track { gap: 20px; animation-duration: 36s; }
- }
+/* Móvil: logos un poco más chicos y menos gap */
+@media (max-width: 768px) {
+  .brand { height: 36px !important; }
+  .brand-track { gap: 20px; animation-duration: 36s; }
+}
 
 /* === TIPOGRAFÍA BEBAS NEUE PARA TODO WOOCOMMERCE === */
 
@@ -1229,6 +1270,82 @@ index b74d2f01691d7752abed9e8157363037311c79e0..452be7d6dd71a8452c2a4c7c9f98287c
     font-family: 'BebasNeue', sans-serif !important;
 }
 
+/* Ocultar precio SOLO en la sección de productos destacados */
+.products-grid .product .price {
+    display: none !important;
+}
 
+/* Color del título del producto */
+.products-grid .product .woocommerce-loop-product__title {
+    color: #000000 !important; /* Cambia por tu color */
+    font-size: 1.5rem !important;
+    font-weight: 300 !important; /* Más delgada */
+}
 
+/* Estilo para el título de Productos Destacados */
+.products-grid h2,
+section h2 {
+    font-family: 'BebasNeue', sans-serif !important;
+    font-weight: 300 !important; /* Más delgado */
+    font-size: 32px !important;  /* Cambia el tamaño */
+    color: #000000 !important;   /* Cambia el color */
+    text-align: center;
+    letter-spacing: 1px; /* opcional: más elegante */
+}
 
+@media (max-width: 768px) {
+    
+    .carousel-track {
+        /* Asegura que el track se pueda desplazar */
+        overflow-x: scroll;
+        
+        /* 🚨 CRÍTICO: Indica que debe haber paradas obligatorias en el eje X */
+        scroll-snap-type: x mandatory; 
+        
+        /* Asegura que no haya salto de línea */
+        flex-wrap: nowrap; 
+        
+        /* Opcional: Oculta la barra de scroll en navegadores Webkit (Chrome, Safari) */
+        -webkit-overflow-scrolling: touch; 
+        scrollbar-width: none; /* Firefox */
+    }
+
+    .carousel-track::-webkit-scrollbar {
+        display: none; /* Chrome/Safari */
+    }
+   
+}
+
+@media (max-width: 768px) {
+    
+    /* ... (código .carousel-track anterior) ... */
+
+    .carousel-item {
+        /* 🚨 CRÍTICO: Forzar el ancho del 100% (anula el fijo de 250px) */
+        flex: 0 0 100%; 
+        
+        /* 🚨 CRÍTICO: Indica que el inicio del ítem es el punto de parada */
+        scroll-snap-align: start; 
+        
+        /* 💡 Si usas el 100%, usa un padding o margin en el contenedor para ver separación */
+        margin-right: 20px; /* Esto empuja el siguiente ítem */
+    }
+    
+    /* 3. Ajuste del Contenedor (para el margen visual) */
+    .carousel-container {
+        /* Ajustamos el relleno para que el margin-right del ítem se vea bien */
+        padding: 0 15px; 
+    }
+}
+
+/* AJUSTE FINAL: Si nada funciona, elimina el gap del track en móvil */
+@media (max-width: 768px) {
+    .carousel-track {
+        gap: 0 !important; /* Elimina cualquier espacio fijo */
+        /* ... otras reglas ... */
+    }
+    .carousel-item {
+        margin-right: 20px; /* Usa el margen para la separación */
+        /* ... otras reglas ... */
+    }
+}
