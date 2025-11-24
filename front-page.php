@@ -22,31 +22,24 @@ index e66322f6fccc2679f71115baeb0f27b501af24c5..d31fb7bf19f3f633a5a00631e10b29d7
  
  
    <section>
-   <h2>🔥 Productos Destacados 🔥</h2>
+   <h2>Productos Destacados</h2>
    <div class="products-grid">
      <?php 
      // Vuelve a 5 productos y 5 columnas para la cuadrícula estática
-     echo do_shortcode('[products limit="5" columns="5" orderby="date" order="DESC"]'); 
+     echo do_shortcode('[products_no_cart limit="5" columns="5" orderby="date" order="DESC"]');
      ?>
    </div>
  </section>
  
  <section class="brand-ticker" aria-label="Marcas que vendemos">
    <div class="brand-viewport">
-     <div class="brand-track">
+     <div class="brand-track" id="brandTrack">
 -      <!-- Bloque A -->
 -      <div class="brand"><img src="https://samisneakers.com/wp-content/uploads/2025/10/nike.svg" alt="Nike"></div>
 -      <div class="brand"><img src="https://samisneakers.com/wp-content/uploads/2025/10/new-balance-logo-png_seeklogo-98723.png" alt="New Balance"></div>
 -      <div class="brand"><img src="https://samisneakers.com/wp-content/uploads/2025/10/Louis_Vuitton_logo_and_wordmark.svg.png" alt="Louis Vuitton"></div>
 -      <div class="brand"><img src="https://samisneakers.com/wp-content/uploads/2025/10/Logo-McQ-Alexander-McQueen.png" alt="McQ"></div>
--      <div class="brand"><img src="https://samisneakers.com/wp-content/uploads/2025/10/jordan.png" alt="Jordan"></div>
--
--      <!-- Bloque B = copia exacta del A para transición perfecta -->
-       <div class="brand"><img src="https://samisneakers.com/wp-content/uploads/2025/10/nike.svg" alt="Nike"></div>
-       <div class="brand"><img src="https://samisneakers.com/wp-content/uploads/2025/10/new-balance-logo-png_seeklogo-98723.png" alt="New Balance"></div>
-       <div class="brand"><img src="https://samisneakers.com/wp-content/uploads/2025/10/Louis_Vuitton_logo_and_wordmark.svg.png" alt="Louis Vuitton"></div>
-       <div class="brand"><img src="https://samisneakers.com/wp-content/uploads/2025/10/Logo-McQ-Alexander-McQueen.png" alt="McQ"></div>
-       <div class="brand"><img src="https://samisneakers.com/wp-content/uploads/2025/10/jordan.png" alt="Jordan"></div>
+-      <div class="brand"><img src="https://samisneakers.com/wp-content/uploads/2025/10/jordan.png" alt="Jordan"></div>--      
      </div>
    </div>
  </section>
